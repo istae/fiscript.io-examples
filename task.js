@@ -3,10 +3,12 @@ const OPEN = 0, HIGH = 1, LOW = 2, CLOSE = 3, BASEVOLUME = 4, QUOTEVOLUME = 5, C
 export function task({ symbols, candles }) {
 
     const list = symbols().filter(s => s.endsWith('USDT'))
+    
+    console.log(list)
 
     const data = list.map(s => {
-        // past 100 days in minutes
-        const sticks = candles(s, 100 * 24 * 60)
+        // past 75 days in minutes
+        const sticks = candles(s, 75 * 24 * 60)
         if (sticks.length == 0) return null
         const avg = EMA(sticks, 50)
         const price = sticks[sticks.length - CANDLEVALUES + CLOSE]
