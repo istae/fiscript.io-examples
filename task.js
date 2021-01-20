@@ -9,7 +9,6 @@ export function task({ symbols, candles }) {
     const data = list.map(s => {
         // past 75 days in minutes
         const sticks = candles(s, 75 * 24 * 60)
-        if (sticks.length == 0) return null
         const avg = EMA(sticks, 50)
         const price = sticks[sticks.length - CANDLEVALUES + CLOSE]
         return {
