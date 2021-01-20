@@ -19,10 +19,14 @@ export function task({ symbols, candles }) {
             change: ((avg - price) / avg) * 100
         }
     })
+	
+    console.log("--------------------------------------")
 
     data.sort((a, b) => b.change - a.change).slice(0, 10).forEach(d => {
         console.log(`${d.symbol} down ${d.change.toFixed(2)}% at ${d.price.toFixed(3)} avg ${d.avg.toFixed(3)}`);
     })
+    
+    console.log("--------------------------------------")
 
     data.sort((a, b) => a.change - b.change).slice(0, 10).forEach(d => {
         console.log(`${d.symbol} up ${Math.abs(d.change).toFixed(2)}% at ${d.price.toFixed(3)} avg ${d.avg.toFixed(3)}`);
