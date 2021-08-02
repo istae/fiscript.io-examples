@@ -3,12 +3,12 @@ const OPEN = 0, HIGH = 1, LOW = 2, CLOSE = 3, BASEVOLUME = 4, QUOTEVOLUME = 5, C
 export function task({ symbols, candles }) {
 
     //const list = symbols().filter(s => s.endsWith('USDT'))
-    const list = ["BTC", "BNB", "ETH", "LINK", "DOT", "XLM", "ALGO", "ATOM", "BAND", "BAT",
-				  "ADA", "VET", "UNI", "OMG", "SUSHI", "XMR"].map(x => x + "USDT")
+    const list = ["BTC", "BNB", "ETH", "LINK", "XLM", "ALGO", "ATOM", "BAND", "BAT",
+				  "ADA", "VET", "OMG", "XMR", "XTZ", "DIA"].map(x => x + "USDT")
 
     const data = list.map(s => {
 	// 300 days of data
-        const sticks = candles(s, 200 * 24 * 60)
+        const sticks = candles(s, 300 * 24 * 60)
 	// 90 day moving average
         const avg = EMA(sticks, 100)
         const price = sticks[sticks.length - CANDLEVALUES + CLOSE]
@@ -39,7 +39,7 @@ export function task({ symbols, candles }) {
 function EMA(data, days) {
 	
 	// 2.7182818
-    const impact = 2 / (24 * 60 * days)
+    const  impact = 2 / (24 * 60 * days)
 
     let average = data[CLOSE];
 
