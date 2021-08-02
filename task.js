@@ -4,7 +4,7 @@ export function task({ symbols, candles }) {
 
     //const list = symbols().filter(s => s.endsWith('USDT'))
     const list = ["BTC", "BNB", "ETH", "LINK", "XLM", "ALGO", "ATOM", "BAND", "BAT",
-				  "ADA", "VET", "OMG", "XMR", "XTZ", "DIA"].map(x => x + "USDT")
+				  "ADA", "VET", "UNI", "MLN", "XMR", "XTZ", "DIA"].map(x => x + "USDT")
 
     const data = list.map(s => {
 	// 300 days of data
